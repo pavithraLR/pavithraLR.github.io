@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>GST Calculator</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="C:\web development\project\my_website\css\style1.css" />
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+       
+      </head>
+<center>
+<body>
+    <h1>Effective interest rate calculator</h1>
+<p>Effective annual interest rate or annual equivalent rate calculator.</p>
+<form name="calcform" autocomplete="off">
+<table class="calc2">
+<tr>
+<td>Nominal annual interest rate:</td>
+<td class="math"><input id="Text1" name="Text1" type="number" min="0" max="100" step="0.25" class="intext" style="width:120px" value="4"> %</td>
+<td colspan="2">per year</td>
+</tr>
+<tr>
+<td>Compounding period:</td>
+<td><select id="Select1" name="Select1" onchange="OnPeriodChange()">
+<option>Days</option>
+<option>Weeks</option>
+<option selected="selected">Months</option>
+<option>Quarters</option>
+<option>Other</option>
+</select></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>Compounding periods per year:</td>
+<td class="math"><input id="Text2" name="Text2" type="number" min="1" max="365" class="intext" style="width:120px" value="12" onchange="OnPeriodNumChange()"></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td colspan="3">
+<button type="button" class="btn btn-success" onclick="OnCalc()"> Calculate </button>
+<input class="btn btn-primary" type="reset" value="Reset">
+</td>
+</tr>
+<tr>
+<td>Effective period interest rate:</td>
+<td class="math"><input id="Text6" name="Text6" type="text" class="outtext" style="width:120px" readonly="readonly">%</td>
+<td colspan="2" id="td1" style="width:70px">per month</td>
+</tr>
+<tr>
+<td>Effective annual interest rate:</td>
+<td class="math"><input id="Text7" name="Text7" type="text" class="outtext" style="width:120px" readonly="readonly">%</td>
+<td colspan="2">per year</td>
+</tr>
+</table>
+</form>
+</body>
+<script>
+    function OnPeriodChange()
+    {
+        i = document.getElementById("Select1").selectedIndex;
+        plook = [365,52,12,4];
+        tlook = ['per day','per week','per month','per quarter',''];
+        document.getElementById("Text2").value = plook[i];
+        document.getElementById("td1").innerHTML = tlook[i];
+    }
+    function OnPeriodNumChange()
+    {
+        nperiod = document.getElementById("Text2").value;
+        txt = '';
+        i = 4;
+        if( nperiod=='365' ) {txt='per day'; i=0;}
+        if( nperiod=='52' )  {txt='per week'; i=1;}
+        if( nperiod=='12' )  {txt='per month'; i=2;}
+        if( nperiod=='4' )	 {txt='per quarter'; i=3;}
+        document.getElementById("td1").innerHTML = txt;
+        document.getElementById("Select1").selectedIndex = i;
+    }
+    function OnCalc()
+    {
+        i = document.getElementById("Text1").value;
+        n = document.getElementById("Text2").value;
+        i = parseFloat(i)/100;
+        imonth = i/n*100;
+        iyear  = (Math.pow((1+i/n),n)-1)*100;
+        document.getElementById("Text6").value = imonth.toFixed(3);
+        document.getElementById("Text7").value = iyear.toFixed(3);
+    }
+   
+</script>
+</center>
+<html>

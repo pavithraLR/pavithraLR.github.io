@@ -1,0 +1,45 @@
+body {
+    background-color:rgb(219, 119, 161);
+    font-family:"arial";
+    display: inline-flex;
+}
+
+#photo {
+    background-color: #f68989;
+    border: 3px;
+    border-color: #faf7f7;
+  }
+  
+  p {
+    background-color: #c65d7b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  
+#edu {
+    background-color: #7cbe12;
+    
+    border: 3px;
+    border-color: #faf7f7;
+  }
+
+  table {
+      border: 2px solid;
+  }
+
+  th, td {
+      text-align: center;
+  }
+
+  .hob {
+      background-color: rgb(158, 214, 26);
+      text-align: center;
+  }
+
+  .con {
+    background-color: aquamarine;
+    text-align: center;
+}
